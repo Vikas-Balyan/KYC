@@ -1,0 +1,12 @@
+query selectCustomerByStatus {
+  description: "Select all Customers based on their status"
+  statement:
+      SELECT org.acme.empty.Customer
+          WHERE (kycStatus == _$status)
+}
+query selectKycDocByCustomerId {
+  description: "Select Customer Doc By Id"
+  statement:
+      SELECT org.acme.empty.kycDoc
+          WHERE (customer == _$customer)
+}

@@ -1,0 +1,36 @@
+
+namespace org.acme.empty
+
+participant Customer identified by customerId {
+  o String customerId
+  o String Name  
+  o Integer kycStatus default=0
+
+ 
+ 
+}
+
+asset kycDoc identified by idCardNo {
+  o String idCardNo
+  o String firstName 
+  o String lastName
+  o String email
+  o String dob
+  o String addess
+  o String idCardImage optional
+  --> Customer customer
+  
+}
+  
+
+transaction kycTransaction {
+  --> kycDoc kycdoc
+  o Integer status
+}
+  
+event kycEvent {
+  --> Customer customer
+  o Integer oldStatus
+  o Integer newStatus
+}
+
